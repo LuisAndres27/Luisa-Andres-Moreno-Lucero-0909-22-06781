@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>prestamo</title>
+	<!-- css -->
+	<style type="text/css">
+h1{
+    text-align: center;
+    font-family: 'arial';
+}
+label{
+    font-family: 'arial';
+    font-weight: bold;
+}
+.form{
+    width: 550px;
+    margin: 0 auto;
+    margin-top: 80px;
+    border:  2px;
+}
+input{
+    width: 200px;
+    margin-bottom: 10px;
+    padding: 8px;
+    margin-right: -6px;
+    background-color: #fdfef7;
+    border: #173441 1.8px solid;
+}
+fieldset{
+    border: #173441 2px solid;
+    border-radius: 10px;
+    background: linear-gradient(to right, #2b2d42, #8d99ae);
+}
+button{
+    background-color: #fdfef7;
+    border: #173441 1.8px solid;
+    width: 100px;
+    font-family: 'arial';
+    font-size: 15px;  
+    border-radius: 2px;
+    padding: 10px;
+    margin-left:77%;
+}
+
+.tab{
+    border-collapse: collapse;
+    text-align: center;
+    font-family: 'arial';
+    background-color: #fdfef7;
+    border: #173441 2px solid;
+    margin: 0 auto;
+    width: 500px;
+}
+thead{
+    border: #173441 2px solid;
+    font-weight: bold;
+}
+tr{
+    border: #173441 2px solid;
+}
+td{
+    border: #173441 2px solid;    
+}
+   body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    background: linear-gradient(to right, #000000, #6c757d);	
+}
+.texto{
+			color:#ffffff ;
+			text-align: justify;
+			font-family: Times New Roman, Arial;
+
+		}
+	</style>
+}
+</head>
+<!-- formulario -->
+<body>
+	  <div class="form">
+        <fieldset>
+            <h1>SIMULADOR DE PRESTAMO</h1>
+            <form>
+                <div>
+                    <label for="capital">CAPITAL 
+                        <input type="text" placeholder="Ingrese el capital prestado" id="capital">
+                        <i class="fas fa-coins"></i>
+                    </label>
+                </div>
+                <div>
+                    <label for="couta">COUTAS 
+                        <input type="text" placeholder="Ingrese las cuotas del prestamo" id="couta">
+                        <i class="far fa-calendar-alt"></i>
+                    </label>
+                </div>
+                <div>
+                    <label for="interes">INTERES
+                        <input type="text" placeholder="Ingrese el interés a generar" id="interes">
+                        <i class="fas fa-hand-holding-usd"></i>
+                    </label>
+                </div>
+                <div>
+                    <label for="interes">tiempo
+                        <input type="text" placeholder="Ingrese el interés a generar" id="tiempo">
+                        <i class="fas fa-hand-holding-usd"></i>
+                    </label>
+                </div>
+            </form>
+        <button onclick="gen_table();">CALCULAR</button>
+        </fieldset>
+        <hr>
+        <div class="texto">
+        	
+        	//cuotas 3 = interes 2.5%//
+        	
+        	//cuotas 6 = interes  5%//
+
+        	//cuotas 9 = interes 10%//
+            </p>
+        </div>
+        
+        <p>
+        <table class="tab">
+            <thead>
+                <tr>
+                    <td>CUOTAS</td>
+                    <td>CAPITAL</td>
+                    <td>INTERES</td>
+                    <td>IMPORTE A PAGAR</td>
+                </tr>
+            </thead>
+            <tbody id="tab">
+            </tbody>
+            <tfoot>
+                <tr>
+                    <td class="ft">TOTAL</td>
+                    <td id="t1"></td>
+                    <td id="t2"></td>
+                    <td id="t3"></td>
+                </tr>
+            </tfoot>
+        </table>
+    </div>
+    <!-- java script -->
+<script type="text/javascript">
+	function gen_table(){
+    document.getElementById("tab").innerHTML="";
+    let capital=Number(document.getElementById("capital").value);
+    let couta=Number(document.getElementById("couta").value);
+    let interes=Number(document.getElementById("interes").value);
+    let tiempo=Number(document.getElementById("interes").value);
+    if(capital>0){   
+        for(i=1;i<=couta;i++){
+            ca=capital/interes;
+            d1=ca.toFixed(2);
+            i2=(interes*tiempo);
+            d2=i2.toFixed(2);
+            r=ca+i2;
+            d3=r.toFixed(2);
+            document.getElementById("tab").innerHTML=document.getElementById("tab").innerHTML+
+                    `<tr>
+                        <td> ${i}</td>
+                        <td> ${d1}</td>
+                        <td> ${d2}</td>
+                        <td> ${d3}</td>
+                    </tr>`;
+        }
+        n1=capital.toFixed(2);
+        t_i=i2*couta;
+        d4=t_i.toFixed(2);
+        t_p=r*couta;
+        d5=t_p.toFixed(2);
+        document.getElementById("t1").innerHTML=n1;
+        document.getElementById("t2").innerHTML=d4;
+        document.getElementById("t3").innerHTML=d5;        
+    }else{
+        alert("Falta ingresar un Número");
+    }
+}
+</script>
+</body>
+</html>
